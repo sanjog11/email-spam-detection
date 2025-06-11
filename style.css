@@ -1,0 +1,208 @@
+/* Load fonts properly */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap');
+
+/* Default body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background image on Streamlit app container */
+[data-testid="stAppViewContainer"] {
+    background: url("https://static.vecteezy.com/system/resources/thumbnails/008/962/769/small/abstract-red-silver-cyber-grey-metallic-geometric-gold-light-on-black-hexagon-mesh-design-modern-technology-futuristic-background-vector.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+/* Overlay */
+[data-testid="stAppViewContainer"]::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+/* Container styling */
+.main .block-container {
+    position: relative;
+    z-index: 1;
+    background: white;
+    padding: 2rem;
+    max-width: 420px;
+    margin: 4rem auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Form styling */
+h1, h2, h3 {
+    text-align: center;
+    color: #333;
+}
+
+
+.stAlert {
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+section[data-testid="stSidebar"] {
+    background: #4a63f3;
+    color: white;
+}
+
+section[data-testid="stSidebar"] .css-1c7y2kd {
+    font-weight: bold;
+    color: white;
+}
+
+/* Vintage glitch title (unchanged) */
+.vintage-title {
+    position: relative;
+    font-family: 'Orbitron', 'Rajdhani', monospace !important;
+    text-transform: uppercase;
+    color: #00ffcc;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 0;
+    text-shadow: 0 0 6px #00ffcc;
+    border-radius: 12px;
+    animation: scanlines 1s steps(60) infinite, glitch 1.5s infinite;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.vintage-title::before,
+.vintage-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: transparent;
+}
+
+.vintage-title::before {
+    color: #ff3ec9;
+    z-index: -1;
+    animation: glitchTop 2s infinite;
+}
+
+.vintage-title::after {
+    color: #00ffff;
+    z-index: -1;
+    animation: glitchBottom 2s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: none; }
+    20% { transform: translate(0.5px, -0.5px); }
+    40% { transform: translate(-0.5px, 0.5px); }
+    60% { transform: translate(0.3px, -0.3px); }
+    80% { transform: translate(-0.3px, 0.3px); }
+}
+
+@keyframes glitchTop {
+    0%   { clip-path: inset(0 0 100% 0); }
+    10%  { clip-path: inset(0 0 60% 0); transform: translate(-1px, -1px); }
+    30%  { clip-path: inset(0 0 40% 0); transform: translate(1px, 1px); }
+    50%  { clip-path: inset(0 0 55% 0); transform: translate(-1px, 0); }
+    70%  { clip-path: inset(0 0 50% 0); transform: translate(1px, -1px); }
+    100% { clip-path: inset(0 0 100% 0); transform: none; }
+}
+
+@keyframes glitchBottom {
+    0%   { clip-path: inset(100% 0 0 0); }
+    10%  { clip-path: inset(40% 0 0 0); transform: translate(1px, 1px); }
+    30%  { clip-path: inset(50% 0 0 0); transform: translate(-1px, -1px); }
+    50%  { clip-path: inset(45% 0 0 0); transform: translate(0.5px, 1px); }
+    70%  { clip-path: inset(50% 0 0 0); transform: translate(-1px, 0); }
+    100% { clip-path: inset(100% 0 0 0); transform: none; }
+}
+
+/* Login form styling */
+
+.main .block-container {
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+form[data-testid="stForm"] {
+    max-width: 400px !important;
+    margin: 5rem auto !important;
+    padding: 2rem 2.5rem !important;
+    background: white !important;
+    border: 2px solid #4a63f3 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+    text-align: center !important;
+}
+
+
+form[data-testid="stForm"] h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+label[for="login_email"], label[for="login_password"] {
+    display: none;
+}
+
+/* Input fields with icons */
+input[type="text"][placeholder*="Email"], 
+input[type="email"][placeholder*="Email"], 
+input[type="password"][placeholder*="Password"] {
+    background: url('data:image/svg+xml;utf8,<svg fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>') no-repeat 10px center !important;
+    background-size: 16px 16px !important;
+    padding-left: 36px !important;   /* space for icon */
+    background-color: transparent !important;
+    border: #07abab !important;
+    border-radius: 50px !important;
+    margin: 8px 0 !important;         /* vertical margin for spacing */
+    padding-top: 10px !important;     /* vertical padding */
+    padding-bottom: 10px !important;  /* vertical padding */
+    width: 100% !important;            /* full width for consistency */
+    box-sizing: border-box !important; /* include padding in width */
+    color: #e9e7e7 !important;            /* text color */
+    font-size: 15px !important;        /* readable font size */
+    outline: none !important;          /* remove default focus outline */
+}
+
+input[type="password"][placeholder*="Password"] {
+    background: url('data:image/svg+xml;utf8,<svg fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-8h-1V7a5 5 0 0 0-10 0v2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-6-2a3 3 0 0 1 3 3v2H9v-2a3 3 0 0 1 3-3z"/></svg>') no-repeat 10px center !important;
+}
+
+/* Make the Streamlit text area (email input) black */
+textarea {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #4a63f3 !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    font-size: 15px !important;
+}
+
+@keyframes fadeInOut {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.fade-message {
+    animation: fadeInOut 10s ease-in-out forwards;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
+    color: #ffcc00;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
